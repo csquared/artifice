@@ -6,7 +6,7 @@ shared_examples_for "a working request" do
   end
 
   it "sends the host properly" do
-    @response["X-Test-Host"].should == "google.com"
+    @response["X-Test-Host"].should match(/^google\.com\:(80|443)$/)
   end
 end
 
