@@ -1,3 +1,4 @@
+source 'http://gemcutter.org'
 gem "rack-test"
 
 group :test do
