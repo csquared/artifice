@@ -25,6 +25,17 @@ module Artifice
     end
   end
 
+  # Use Artifice to disable HTTP Connections
+  #
+  # Calling this method will replace the Net::HTTP system
+  # with a replacement that raises an error whenever an 
+  # HTTP request is received.
+  def self.disable_net_connect
+    self.activate_with(lambda { |env|
+      raise "Unexcpected HTTP call with: \n #{env.inspect}"
+    })
+  end
+
   # Deactivate the Artifice replacement.
   def self.deactivate
     replace_net_http(NET_HTTP)
